@@ -42,3 +42,21 @@ const fakeCourseData = [
 export function getCourses(req: Request, res: Response) {
   return res.status(200).send(fakeCourseData);
 }
+
+export function getCourseById(req: Request, res: Response) {
+  try {
+    const id = parseInt(req.params.id);
+
+    // console.log(id);
+
+    const course = fakeCourseData.find((course) =>
+      course.id === id ? { ...course } : undefined
+    );
+    if (course === undefined) {
+      res.status(403).send({ message: "Course not found" });
+    }
+    return res.status(200).send(course);
+  } catch (error) {
+    res.status(403).send(error);
+  }
+}
