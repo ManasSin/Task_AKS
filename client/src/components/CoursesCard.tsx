@@ -4,7 +4,7 @@ type Props = {
   courses: Course[];
 };
 
-export const Projects = ({ courses }: Props) => {
+export const CoursesCard = ({ courses }: Props) => {
   const dateDifference = (date1: Date, date2: Date) => {
     const timeDifference = date2.getTime() - date1.getTime();
     const secondsInDay = 86400;
@@ -43,7 +43,7 @@ export const Projects = ({ courses }: Props) => {
   );
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-[minmax(200px,auto)] max-w-7xl mx-auto gap-y-5 gap-x-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-[minmax(200px,auto)] max-w-7xl mx-auto gap-y-2 gap-x-2">
       {courses.map(
         ({ id, title, details, autherName, price, duration }: Course) => (
           <div

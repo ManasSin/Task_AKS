@@ -1,14 +1,14 @@
 import { ErrorRequestHandler } from "express";
 
 export const errorInterceptor: ErrorRequestHandler = (err, req, res, next) => {
-  console.error("middleware Error");
-  const errorStatus = err.status || 503;
-  const errorMessage = err.message || "Something went wrong in the middleware";
+  let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
 
-  res.status(errorStatus).send({
-    error: errorMessage,
-    status: errorStatus,
-    message: errorMessage,
+  let message = err.message || "Something went wrong in the middleware";
+
+  res.status(statusCode).send({
+    error: message,
+    status: statusCode,
+    message,
     stack: process.env.NODE_ENV === "production" ? null : err.stack,
   });
   next(err);
