@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CourseState, StudentState } from "../types";
 
-const getData: StudentState =
-  localStorage.getItem("student") !== undefined
-    ? JSON.parse(localStorage.getItem("student") || "[]")
-    : [];
+// const getData: StudentState =
+//   localStorage.getItem("student") !== undefined
+//     ? JSON.parse(localStorage.getItem("student") || "[]")
+//     : [];
 
 const initialState: StudentState = {
-  ...getData,
+  name: "",
+  coursesEnrolledIn: [],
+  completedCourses: [],
 };
 
 const studentSlice = createSlice({
