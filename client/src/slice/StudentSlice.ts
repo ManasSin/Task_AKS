@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CourseState, StudentState } from "../types";
 
+const getData: StudentState =
+  localStorage.getItem("student") !== undefined
+    ? JSON.parse(localStorage.getItem("student") || "[]")
+    : [];
+
 const initialState: StudentState = {
-  // id: 0,
-  name: "",
-  coursesEnrolledIn: [],
-  completedCourses: [],
+  ...getData,
 };
 
 const studentSlice = createSlice({
@@ -23,6 +25,7 @@ const studentSlice = createSlice({
         completed: false,
       };
       state.coursesEnrolledIn.push(newCourse);
+      localStorage.setItem("student", JSON.stringify(state));
     },
     setCompletedCourse: (state, action: PayloadAction<{ id: number }>) => {
       const courseIndex = state.coursesEnrolledIn.findIndex(
@@ -31,8 +34,9 @@ const studentSlice = createSlice({
       if (courseIndex !== -1) {
         state.coursesEnrolledIn[courseIndex].completed = true;
         state.completedCourses.push(state.coursesEnrolledIn[courseIndex]);
-        // state.coursesEnrolledIn.splice(courseIndex, 1);
+        state.coursesEnrolledIn.splice(courseIndex, 1);
       }
+      localStorage.setItem("student", JSON.stringify(state));
     },
   },
 });

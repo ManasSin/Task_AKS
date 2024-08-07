@@ -7,6 +7,10 @@ import { CoursesCard } from "./CoursesCard";
 export const Dashboard = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const courses = useSelector((state: any) => state.student.coursesEnrolledIn);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const completedCourse = useSelector(
+    (state: any) => state.student.completedCourses
+  );
   // const courses  = data;
   console.log(courses);
   return (
@@ -32,6 +36,25 @@ export const Dashboard = () => {
           )}
         </div>
       </section>
+      {completedCourse.length > 0 ? (
+        <section className="flex flex-col justify-start gap-6 items-center max-w-5xl mx-auto w-full">
+          <h2 className="text-xl text-black font-semibold ">
+            Completed Courses
+          </h2>
+          <div className="grid grid-flow-row md:grid-flow-col max-w-7xl mx-6 gap-y-2 gap-x-2">
+            {completedCourse.map(({ courses, id }: CourseState) => (
+              // course.courses.map((course: Course) => (
+              <CoursesCard
+                // key={course.id}
+                courses={courses}
+                isCompleted={true}
+                id={id}
+              />
+              // ))
+            ))}
+          </div>
+        </section>
+      ) : null}
     </main>
   );
 };
