@@ -12,12 +12,10 @@ const studentSlice = createSlice({
   name: "student",
   initialState,
   reducers: {
-    // setStudentData: (state, action: PayloadAction<{ name: string }>) => {
-    //   return {
-    //     ...state,
-    //     ...action.payload,
-    //   };
-    // },
+    setStudentName: (state, action: PayloadAction<{ name: string }>) => {
+      if (state.name !== action.payload.name && action.payload.name.length > 0)
+        state.name = action.payload.name;
+    },
     setCourseEnrolledIn: (state, action: PayloadAction<CourseState>) => {
       const newCourse: CourseState = {
         courses: action.payload.courses,
@@ -25,7 +23,6 @@ const studentSlice = createSlice({
         completed: false,
       };
       state.coursesEnrolledIn.push(newCourse);
-      console.log(state.coursesEnrolledIn);
     },
     setCompletedCourse: (state, action: PayloadAction<{ id: number }>) => {
       const courseIndex = state.coursesEnrolledIn.findIndex(
@@ -34,12 +31,13 @@ const studentSlice = createSlice({
       if (courseIndex !== -1) {
         state.coursesEnrolledIn[courseIndex].completed = true;
         state.completedCourses.push(state.coursesEnrolledIn[courseIndex]);
-        state.coursesEnrolledIn.splice(courseIndex, 1);
+        // state.coursesEnrolledIn.splice(courseIndex, 1);
       }
     },
   },
 });
 
-export const { setCourseEnrolledIn, setCompletedCourse } = studentSlice.actions;
+export const { setStudentName, setCourseEnrolledIn, setCompletedCourse } =
+  studentSlice.actions;
 
 export default studentSlice.reducer;

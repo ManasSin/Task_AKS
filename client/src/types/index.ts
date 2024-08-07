@@ -19,7 +19,7 @@ export type Course = {
 };
 
 export interface CourseState {
-  courses: Course;
+  courses: Course[] | Course;
   completed?: boolean;
   id?: number;
 }
