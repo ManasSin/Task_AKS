@@ -20,7 +20,7 @@ export const Dashboard = () => {
           Courses that you have enrolled in
         </h2>
         <div className="grid grid-flow-row md:grid-flow-col max-w-7xl mx-6 gap-y-2 gap-x-2">
-          {courses.length > 0 ? (
+          {courses?.length > 0 ? (
             courses.map(({ courses, id, completed }: CourseState) => (
               // course.courses.map((course: Course) => (
               <CoursesCard
@@ -36,7 +36,7 @@ export const Dashboard = () => {
           )}
         </div>
       </section>
-      {completedCourse.length > 0 ? (
+      {completedCourse?.length > 0 ? (
         <section className="flex flex-col justify-start gap-6 items-center max-w-5xl mx-auto w-full">
           <h2 className="text-xl text-black font-semibold ">
             Completed Courses

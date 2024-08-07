@@ -11,10 +11,16 @@ type Props = {
   id?: number;
 };
 
+// enum ViewType {
+//   grid = "grid",
+//   list = "list",
+// }
+
 export const CoursesCard = ({ courses, isCompleted, id: courseId }: Props) => {
   const dispatch = useDispatch();
   const isCourseArray = Array.isArray(courses);
   const [success, setSuccess] = useState<string>("");
+  // const [viewType, setViewType] = useState<ViewType>(ViewType.grid);
 
   const handleMarkComplete = () => {
     if (courseId !== undefined) dispatch(setCompletedCourse({ id: courseId }));
@@ -32,18 +38,20 @@ export const CoursesCard = ({ courses, isCompleted, id: courseId }: Props) => {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-[minmax(200px,auto)] max-w-7xl mx-auto gap-y-2 gap-x-2"
       >
         {courses?.map(
-          ({ id, title, description, autherName, price, duration }: Course) => (
-            <Card
-              autherName={autherName}
-              description={description}
-              duration={duration}
-              id={id}
-              key={id}
-              price={price}
-              title={title}
-              publishedAt={timeBefore}
-            />
-          )
+          ({ id, title, description, autherName, price, duration }: Course) => {
+            return (
+              <Card
+                autherName={autherName}
+                description={description}
+                duration={duration}
+                id={id}
+                key={id}
+                price={price}
+                title={title}
+                publishedAt={timeBefore}
+              />
+            );
+          }
         )}
       </div>
     );
