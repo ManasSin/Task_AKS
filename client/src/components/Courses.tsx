@@ -38,7 +38,7 @@ export const Courses = () => {
       setSearchTerm(searching);
     }, 500);
   };
-  console.log(courses);
+  // console.log(courses);
   return (
     <main className="flex flex-col items-center mx-auto bg-gradient-to-r from-blue-600 to-blue-400">
       <div className="max-w-6xl">

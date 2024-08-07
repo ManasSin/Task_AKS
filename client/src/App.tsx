@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 import { Course } from "./types";
 import { api, endPoint } from "./lib/axios";
 import { setCourses as setGlobalCourses } from "./slice/CourseSlice";
+import { useDispatch } from "react-redux";
 
 function App() {
   const [serverResponse, setServerResponse] = useState<boolean>(false);
+  const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchCourses = async () => {
       setLoading(true);
@@ -19,7 +23,8 @@ function App() {
           setServerResponse(true);
         });
       localStorage.setItem("courses", JSON.stringify(response) || "[]");
-      setGlobalCourses(response);
+      setCourses(response);
+      dispatch(setGlobalCourses(response));
     };
     fetchCourses();
     setLoading(false);
@@ -33,7 +38,7 @@ function App() {
   return (
     <>
       <Navbar />
-      {loading ? <div>Loading</div> : <Outlet />}
+      {loading ? <div>Loading</div> : <Outlet context={courses} />}
     </>
   );
 }

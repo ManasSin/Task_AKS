@@ -9,4 +9,5 @@ export const api = axios.create({
 
 export const endPoint = {
   course: "api/courses",
+  courseId: "api/courses/:id",
 };

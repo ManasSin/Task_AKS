@@ -13,12 +13,14 @@ import "./index.css";
 import { Courses } from "./components/Courses";
 import { Home } from "./components/Home";
 import { Dashboard } from "./components/Dashboard";
+import { CoursePage } from "./components/CoursePage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index path="/" element={<Home />} />
       <Route path="/courses" element={<Courses />} />
+      <Route path="/courses/:id" element={<CoursePage />} />
       <Route path="/dashboard" element={<Dashboard />} />
     </Route>
   )

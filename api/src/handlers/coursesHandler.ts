@@ -10,7 +10,7 @@ const fakeCourseData = [
   {
     id: 1,
     title: "Data Science with Python",
-    details:
+    description:
       "Learn how to use Python for data analysis and machine learning. This course covers data preprocessing, visualization, statistical analysis, and modeling. Students will learn how to use Python libraries like NumPy, Pandas, and Matplotlib to work with data. They will also learn how to use scikit-learn for machine learning tasks. The course covers topics such as linear regression, decision trees, and clustering.",
     price: 100,
     autherName: "John Smith",
@@ -24,7 +24,7 @@ const fakeCourseData = [
   {
     id: 2,
     title: "Full Stack Web Development",
-    details:
+    description:
       "Learn how to build websites from frontend to backend using HTML, CSS, JavaScript, and a backend language like Node.js. This course covers the basics of web development, including HTML and CSS for creating the user interface, JavaScript for interactivity, and Node.js for server-side programming. Students will build a dynamic web application using Express.js, connect to a database, and implement user authentication. The course also covers topics such as RESTful APIs and deployment.",
     price: 200,
     autherName: "Jane Doe",
@@ -38,7 +38,7 @@ const fakeCourseData = [
   {
     id: 3,
     title: "Cybersecurity Fundamentals",
-    details:
+    description:
       "Learn the basics of protecting computer systems from hackers and unauthorized access. This course covers the fundamentals of cybersecurity, including threat modeling, risk assessment, and vulnerability management. Students will learn how to use cryptography, secure coding practices, and network security protocols. The course covers topics such as encryption, firewalls, and penetration testing.",
     price: 300,
     autherName: "Bob Johnson",
@@ -52,7 +52,7 @@ const fakeCourseData = [
   {
     id: 4,
     title: "Artificial Intelligence for Business",
-    details:
+    description:
       "Learn how to leverage Artificial Intelligence (AI) to improve business processes and make data-driven decisions. This course covers the basics of AI, including machine learning, natural language processing, and computer vision. Students will learn how to use Python libraries like TensorFlow and Keras to build AI models. They will also learn how to implement AI solutions in real-world scenarios, such as customer service chatbots and fraud detection. The course covers topics such as supervised and unsupervised learning, deep learning, and reinforcement learning.",
     price: 400,
     autherName: "Alice Smith",

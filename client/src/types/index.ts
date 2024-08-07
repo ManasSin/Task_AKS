@@ -7,7 +7,7 @@
 export type Course = {
   id: number;
   title: string;
-  details: string;
+  description: string;
   price: number;
   autherName: string;
   duration: number;
@@ -25,7 +25,7 @@ export interface CourseState {
 }
 
 export interface StudentState {
-  id: number;
+  // id: number;
   name: string;
   coursesEnrolledIn: CourseState[];
   completedCourses: CourseState[];
